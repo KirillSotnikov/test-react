@@ -1,28 +1,21 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Form } from '../Components/ToDo/Form'
 import { TextView } from '../Components/ToDo/TextView'
-import { ListContext } from '../Store/list'
 
-const list = {
-  light: {
-    foreground: "#000000",
-    background: "#eeeeee"
-  },
-  dark: {
-    foreground: "#ffffff",
-    background: "#222222"
-  }
-}
+import { TextState } from '../Store/Text/TextState'
+import { TextContext } from '../Store/Text/TextContext'
+
 
 export const TodoList = () => {
+  const { text, setText } = useContext(TextContext)
   return (
-    <ListContext.Provider value={list}>
+    <TextState>
       <div className="container">
-        <h3>ToDo List</h3>
-        <Form />
+        <h3>ToDo React List</h3>
+        <Form setText={setText} />
 
-        <TextView />
+        <TextView text={text} />
       </div>
-    </ListContext.Provider>
+    </TextState>
   )
 }

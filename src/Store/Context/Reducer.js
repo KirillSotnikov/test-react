@@ -1,14 +1,16 @@
 import { SET_TEXT } from "../types";
 
 const handlers = {
-  [SET_TEXT]: (state, {payload}) => ({
-    ...state,
-    text: payload
-  }),
+  [SET_TEXT]: (state, {text}) => {
+    return {
+      ...state,
+      text
+    }
+  },
   DEFAULT: state => state
 }
 
-export const TextReducer = (state, action) => {
+export const Reducer = (state, action) => {
   const handle = handlers[action.type] || handlers.DEFAULT
   return handle(state, action)
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const TextView = () => {
+export const TextView = ({text}) => {
   return (
     <>
-      <strong>Text: </strong>
+      <strong>Text: </strong>{text}
     </>
   )
 }

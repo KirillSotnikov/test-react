@@ -4,22 +4,25 @@ const inputStyle = {
   maxWidth: '350px'
 }
 
-export const Form = () => {
+export const Form = ({setText}) => {
 
-  const [text, setText] = useState('')
+  const [value, setValue] = useState('')
 
   const changeHandler = (e) => {
     const value = e.target.value
     
-    setText(value)
+    setValue(value)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if ( text.trim() ) {
-      console.log(text);
+    if ( value.trim() ) {
+      setText(value)
     } else {
-      alert('Text is empty')
+      const isConfirm = window.confirm('Text is empty, are you ready?')
+      if(isConfirm) {
+        setText(value)
+      }
     }
   }
 
